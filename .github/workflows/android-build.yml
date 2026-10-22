@@ -2,13 +2,9 @@ name: Build Pars Ping Android APK
 
 'on':
 push:
-branches:
-- main
-- master
+branches: [main, master]
 pull_request:
-branches:
-- main
-- master
+branches: [main, master]
 workflow_dispatch:
 
 permissions:
@@ -29,11 +25,11 @@ steps:
       distribution: temurin
       java-version: '17'
 
-  - name: Validate Gradle Wrapper
-    uses: gradle/actions/wrapper-validation@v3
-
   - name: Grant Execute Permission
     run: chmod +x android/gradlew
+
+  - name: Validate Gradle Wrapper
+    uses: gradle/actions/wrapper-validation@v3
 
   - name: Build Debug APK
     working-directory: android
