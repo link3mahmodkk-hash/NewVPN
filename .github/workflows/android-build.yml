@@ -27,13 +27,13 @@ uses: actions/checkout@v4
       distribution: temurin
       java-version: '17'
 
-  - name: Build Debug APK
+- name: Build Debug APK
     working-directory: android
     run: |
       chmod +x gradlew
       ./gradlew assembleDebug --no-daemon --stacktrace
 
-  - name: Upload Pars Ping APK
+- name: Upload Pars Ping APK
     uses: actions/upload-artifact@v4
     with:
       name: ParsPing-VPN-Debug-APK
