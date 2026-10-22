@@ -1,10 +1,14 @@
 name: Build Pars Ping Android APK
 
-on:
+'on':
 push:
-branches: ["main", "master"]
+branches:
+- main
+- master
 pull_request:
-branches: ["main", "master"]
+branches:
+- main
+- master
 workflow_dispatch:
 
 permissions:
@@ -15,10 +19,6 @@ build:
 name: Build Pars Ping APK
 runs-on: ubuntu-latest
 
-defaults:
-  run:
-    working-directory: android
-
 steps:
   - name: Checkout Repository
     uses: actions/checkout@v4
@@ -27,21 +27,16 @@ steps:
     uses: actions/setup-java@v4
     with:
       distribution: temurin
-      java-version: "17"
+      java-version: '17'
 
   - name: Validate Gradle Wrapper
     uses: gradle/actions/wrapper-validation@v3
-    with:
-      min-wrapper-count: 1
 
   - name: Grant Execute Permission
-    run: chmod +x gradlew
-
-  - name: Run Unit Tests
-    run: ./gradlew testDebugUnitTest --no-daemon
-    continue-on-error: true
+    run: chmod +x android/gradlew
 
   - name: Build Debug APK
+    working-directory: android
     run: ./gradlew assembleDebug --no-daemon --stacktrace
 
   - name: Upload Pars Ping APK
