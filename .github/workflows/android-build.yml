@@ -1,6 +1,6 @@
 name: Build Pars Ping Android APK
 
-'on':
+on:
 push:
 branches:
 - main
@@ -31,5 +31,5 @@ uses: actions/checkout@v4
     uses: actions/upload-artifact@v4
     with:
       name: ParsPing-APK
-      path: android/build/outputs/apk/debug/*.apk
+      path: android/app/build/outputs/apk/debug/*.apk
       if-no-files-found: error
