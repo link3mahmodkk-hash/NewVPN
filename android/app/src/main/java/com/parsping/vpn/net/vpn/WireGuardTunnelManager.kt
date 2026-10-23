@@ -7,7 +7,6 @@ import com.wireguard.android.backend.Backend
 import com.wireguard.android.backend.GoBackend
 import com.wireguard.android.backend.Tunnel
 import com.wireguard.config.Config
-import com.wireguard.config.InetAddressScope
 import com.wireguard.config.InetEndpoint
 import com.wireguard.config.InetNetwork
 import com.wireguard.config.Interface
